@@ -2,8 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Star, Award, Trophy, Medal, Quote } from 'lucide-react';
-import { Button } from "@/components/ui/button";
-import gsap from 'gsap';
 import {
   Carousel,
   CarouselContent,
@@ -11,95 +9,75 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Avatar } from "@/components/ui/avatar";
+import gsap from 'gsap';
 
 interface TestimonialProps {
   quote: string;
   author: string;
   role: string;
   avatar: string;
-  level: number;
-  badge: React.ReactNode;
-  index: number;
+  rating: number;
+  achievement: keyof typeof achievements;
 }
 
-const Testimonial: React.FC<TestimonialProps> = ({ 
-  quote, author, role, avatar, level, badge, index 
+const achievements = {
+  fastLearner: {
+    icon: Star,
+    label: "Fast Learner",
+    color: "text-yellow-400"
+  },
+  topStudent: {
+    icon: Trophy,
+    label: "Top Student",
+    color: "text-amber-400"
+  },
+  excellence: {
+    icon: Award,
+    label: "Excellence",
+    color: "text-purple-400"
+  },
+  master: {
+    icon: Medal,
+    label: "Master",
+    color: "text-blue-400"
+  }
+};
+
+const Testimonial: React.FC<TestimonialProps> = ({
+  quote,
+  author,
+  role,
+  avatar,
+  rating,
+  achievement
 }) => {
-  const testimonialRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    if (!testimonialRef.current) return;
-    
-    gsap.fromTo(
-      testimonialRef.current,
-      { 
-        opacity: 0,
-        scale: 0.9,
-        rotateY: index % 2 === 0 ? -15 : 15
-      },
-      { 
-        opacity: 1,
-        scale: 1,
-        rotateY: 0,
-        duration: 0.8,
-        delay: index * 0.2,
-        scrollTrigger: {
-          trigger: testimonialRef.current,
-          start: "top bottom-=100",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-  }, [index]);
-
+  const Achievement = achievements[achievement].icon;
+  
   return (
-    <Card 
-      ref={testimonialRef}
-      className={`p-8 transition-all duration-500 cursor-pointer relative overflow-hidden
-        bg-gradient-to-br from-edtech-dark to-black border-white/5
-        hover:border-edtech-primary/30 hover:shadow-lg hover:shadow-edtech-primary/10
-      `}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div className={`absolute inset-0 bg-gradient-to-br from-edtech-primary/10 via-transparent to-edtech-accent/10 opacity-0 transition-opacity duration-500 ${hovered ? 'opacity-100' : ''}`}></div>
+    <Card className="relative h-full p-6 bg-white/5 backdrop-blur-lg border border-white/10 hover:border-edtech-primary/50 transition-all duration-300">
+      <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-edtech-dark/80 border border-white/10 flex items-center justify-center">
+        <Achievement className={`w-6 h-6 ${achievements[achievement].color}`} />
+      </div>
       
-      <div className="relative z-10">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center">
-            <div className="text-edtech-primary mr-2">
-              {badge}
-            </div>
-            <div className="px-3 py-1 bg-edtech-primary/20 text-edtech-primary rounded-full text-xs">
-              Level {level} Learner
-            </div>
-          </div>
-          <div className="text-yellow-400">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} size={16} className={i < 5 ? "fill-yellow-400 inline-block" : "inline-block"} />
-            ))}
-          </div>
+      <Quote className="w-8 h-8 mb-4 text-edtech-primary/50" />
+      
+      <p className="text-white/90 mb-6 italic">"{quote}"</p>
+      
+      <div className="flex items-center">
+        <Avatar className="h-12 w-12 border-2 border-edtech-primary/20">
+          <img src={avatar} alt={author} className="object-cover" />
+        </Avatar>
+        
+        <div className="ml-4">
+          <h4 className="font-medium text-white">{author}</h4>
+          <p className="text-sm text-white/60">{role}</p>
         </div>
         
-        <Quote className="text-edtech-primary/20 absolute top-4 right-4 h-16 w-16" />
-        
-        <p className="text-white/80 mb-8 relative z-10 text-lg">"{quote}"</p>
-        
-        <div className="flex items-center">
-          <div className="mr-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-edtech-primary to-edtech-accent flex items-center justify-center overflow-hidden">
-              {avatar ? (
-                <img src={avatar} alt={author} className="w-full h-full object-cover" />
-              ) : (
-                <span className="text-xl font-bold text-white">{author.charAt(0)}</span>
-              )}
-            </div>
-          </div>
-          <div>
-            <h4 className="font-semibold text-white">{author}</h4>
-            <p className="text-sm text-white/60">{role}</p>
-          </div>
+        <div className="ml-auto flex items-center">
+          {Array.from({ length: rating }).map((_, i) => (
+            <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+          ))}
         </div>
       </div>
     </Card>
@@ -108,22 +86,20 @@ const Testimonial: React.FC<TestimonialProps> = ({
 
 const TestimonialsSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const subHeadingRef = useRef<HTMLParagraphElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
+  
   useEffect(() => {
-    if (!headingRef.current || !subHeadingRef.current || !carouselRef.current) return;
-
+    if (!titleRef.current || !testimonialsRef.current) return;
+    
     gsap.fromTo(
-      [headingRef.current, subHeadingRef.current],
+      titleRef.current,
       { y: 50, opacity: 0 },
       { 
         y: 0, 
         opacity: 1, 
-        duration: 0.8, 
-        stagger: 0.2,
+        duration: 0.8,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top bottom-=100",
@@ -131,175 +107,120 @@ const TestimonialsSection: React.FC = () => {
         }
       }
     );
+    
+    gsap.fromTo(
+      testimonialsRef.current.children,
+      { y: 50, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        stagger: 0.2,
+        duration: 0.8,
+        delay: 0.3,
+        scrollTrigger: {
+          trigger: testimonialsRef.current,
+          start: "top bottom-=50",
+          toggleActions: "play none none none"
+        }
+      }
+    );
   }, []);
-
-  const handleSlideChange = (index: number) => {
-    setActiveIndex(index);
-  };
-
-  // Create a function to handle the Carousel onSelect event
-  const handleCarouselSelect = (event: React.SyntheticEvent<HTMLDivElement>) => {
-    // Get the current slide index from the Carousel API
-    // Since we can't directly get the index from the event,
-    // we'll need to use the activeIndex state that's already being tracked
-    // This is a workaround since we can't modify the Carousel component
-  };
 
   const testimonials = [
     {
       quote: "The AI-enhanced video transcription makes finding key concepts a breeze. This platform is revolutionizing how we learn!",
-      author: "Dr. Sarah Johnson",
-      role: "Professor of Computer Science",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-      level: 5,
-      badge: <Trophy className="h-5 w-5 text-yellow-400" />
+      author: "Sarah Johnson",
+      role: "Computer Science Student",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      rating: 5,
+      achievement: "fastLearner"
     },
     {
-      quote: "Real-time chat with tutors has transformed my learning experience. I get instant help whenever I need it.",
+      quote: "Being able to chat with tutors in real-time has drastically improved my understanding of complex topics.",
       author: "Michael Chen",
-      role: "Graduate Student",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-      level: 3,
-      badge: <Award className="h-5 w-5 text-edtech-accent" />
+      role: "Engineering Major",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+      rating: 5,
+      achievement: "topStudent"
     },
     {
-      quote: "The global learning community and interactive features make teaching more engaging than ever before.",
-      author: "Prof. James Wilson",
-      role: "Visiting Lecturer",
-      avatar: "https://randomuser.me/api/portraits/men/46.jpg",
-      level: 4,
-      badge: <Medal className="h-5 w-5 text-edtech-primary" />
+      quote: "The platform's AI features help me create more engaging content for my students. It's a game-changer!",
+      author: "Dr. Emily Rodriguez",
+      role: "Professor of Mathematics",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      rating: 5,
+      achievement: "excellence"
     },
     {
-      quote: "I've tried many educational platforms, but EdTech truly stands out with its community-driven approach and cutting-edge technology.",
-      author: "Emma Rodriguez",
-      role: "High School Teacher",
-      avatar: "https://randomuser.me/api/portraits/women/23.jpg",
-      level: 5,
-      badge: <Trophy className="h-5 w-5" />
-    },
-    {
-      quote: "The AI transcription and search capabilities save me hours of time. I can quickly find the exact concepts I need to review.",
-      author: "David Kim",
-      role: "Engineering Student",
-      avatar: "https://randomuser.me/api/portraits/men/15.jpg",
-      level: 2,
-      badge: <Award className="h-5 w-5" />
-    },
-    {
-      quote: "As an adjunct professor at multiple universities, EdTech has become my central hub for all my courses. It's streamlined my teaching tremendously.",
-      author: "Dr. Priya Patel",
-      role: "Adjunct Professor",
-      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-      level: 4,
-      badge: <Medal className="h-5 w-5" />
+      quote: "The interactive learning environment and AI assistance have transformed my teaching experience.",
+      author: "Prof. David Kim",
+      role: "Physics Educator",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      rating: 5,
+      achievement: "master"
     }
-  ];
+  ] as const;
 
   return (
-    <div ref={sectionRef} className="py-24 bg-gradient-to-br from-edtech-dark/80 to-black relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-edtech-primary/10 blur-[100px] rounded-full animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-edtech-accent/10 blur-[100px] rounded-full animate-pulse"></div>
-      
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 grid grid-cols-6 gap-4">
-          {Array.from({ length: 7 }).map((_, i) => (
-            <div key={i} className="border-l border-edtech-primary/30 h-full"></div>
-          ))}
-        </div>
-        <div className="absolute inset-0 grid grid-rows-6 gap-4">
-          {Array.from({ length: 7 }).map((_, i) => (
-            <div key={i} className="border-t border-edtech-primary/30 w-full"></div>
-          ))}
-        </div>
+    <div ref={sectionRef} className="py-24 relative overflow-hidden bg-gradient-to-br from-edtech-dark to-black">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-48 -right-48 w-96 h-96 bg-edtech-primary/20 rounded-full blur-[100px]"></div>
+        <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-edtech-accent/20 rounded-full blur-[100px]"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
+        <div ref={titleRef} className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Our Learners
             <span className="bg-gradient-to-r from-edtech-primary to-edtech-accent text-transparent bg-clip-text">
-              Learning Heroes
+              {" "}Love Us
             </span>
           </h2>
-          <p ref={subHeadingRef} className="text-xl text-white/70 max-w-3xl mx-auto">
-            Join our community of educators and students who are already transforming how they teach and learn.
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            Join thousands of satisfied students and educators who are transforming 
+            their learning experience with our AI-powered platform.
           </p>
         </div>
-
-        <div className="mb-8 flex items-center justify-between">
-          <div className="flex items-center">
-            <Trophy className="text-yellow-400 mr-2" />
-            <h3 className="text-white text-xl font-bold">Top Testimonials</h3>
-          </div>
-          <div className="bg-edtech-primary/20 px-4 py-1 rounded-full">
-            <span className="text-edtech-primary text-sm font-medium">{testimonials.length} Success Stories</span>
-          </div>
-        </div>
-
-        <div ref={carouselRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-[1000px] hidden md:grid">
+        
+        {/* Desktop Grid */}
+        <div ref={testimonialsRef} className="hidden md:grid grid-cols-2 gap-6 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <Testimonial
-              key={index}
-              quote={testimonial.quote}
-              author={testimonial.author}
-              role={testimonial.role}
-              avatar={testimonial.avatar}
-              level={testimonial.level}
-              badge={testimonial.badge}
-              index={index}
-            />
+            <Testimonial key={index} {...testimonial} />
           ))}
         </div>
         
+        {/* Mobile Carousel */}
         <div className="md:hidden">
-          <Carousel 
-            className="w-full"
-            // Fix: Remove the onSelect prop as it expects a ReactEventHandler
-            // but we're trying to pass a function that accepts a number
-          >
+          <Carousel className="w-full">
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} onFocus={() => setActiveIndex(index)}>
-                  <div className="p-1">
-                    <Testimonial
-                      quote={testimonial.quote}
-                      author={testimonial.author}
-                      role={testimonial.role}
-                      avatar={testimonial.avatar}
-                      level={testimonial.level}
-                      badge={testimonial.badge}
-                      index={index}
-                    />
-                  </div>
+                <CarouselItem 
+                  key={index} 
+                  className="px-4"
+                  onFocus={() => setActiveIndex(index)}
+                >
+                  <Testimonial {...testimonial} />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-6 gap-8">
-              <CarouselPrevious className="bg-edtech-primary/20 hover:bg-edtech-primary/40 border-edtech-primary/50" />
-              <CarouselNext className="bg-edtech-primary/20 hover:bg-edtech-primary/40 border-edtech-primary/50" />
+            <div className="flex justify-center mt-4 gap-4">
+              <CarouselPrevious className="position-static" />
+              <CarouselNext className="position-static" />
             </div>
           </Carousel>
-          
-          <div className="flex justify-center mt-6 gap-2">
-            {testimonials.map((_, index) => (
-              <div 
-                key={index} 
-                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  index === activeIndex ? 'bg-edtech-primary scale-125' : 'bg-white/20'
-                }`}
-                onClick={() => handleSlideChange(index)}
-              ></div>
-            ))}
-          </div>
         </div>
         
-        <div className="mt-16 text-center">
-          <Button 
-            size="lg"
-            className="bg-edtech-primary hover:bg-edtech-primary/80 text-white font-semibold px-8 py-6 text-lg"
-          >
-            Join Our Community
-          </Button>
+        {/* Progress Indicators */}
+        <div className="mt-8 flex justify-center gap-2">
+          {testimonials.map((_, index) => (
+            <div
+              key={index}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === activeIndex ? 'bg-edtech-primary' : 'bg-white/20'
+              }`}
+            ></div>
+          ))}
         </div>
       </div>
     </div>
@@ -307,3 +228,4 @@ const TestimonialsSection: React.FC = () => {
 };
 
 export default TestimonialsSection;
+
