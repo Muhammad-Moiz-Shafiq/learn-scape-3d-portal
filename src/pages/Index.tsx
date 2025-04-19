@@ -1,12 +1,47 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { useEffect } from 'react';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import HeroSection from '@/components/sections/HeroSection';
+import FeaturesSection from '@/components/sections/FeaturesSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import CTASection from '@/components/sections/CTASection';
+import AIIntegrationSection from '@/components/sections/AIIntegrationSection';
+import ScrollToTop from '@/components/ui/ScrollToTop';
 
 const Index = () => {
+  useEffect(() => {
+    // Update the document title
+    document.title = "EdTech Platform - Next-Gen Learning with AI";
+  }, []);
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-edtech-dark">
+      <Header />
+      
+      <main>
+        <section id="hero">
+          <HeroSection />
+        </section>
+        
+        <section id="features">
+          <FeaturesSection />
+        </section>
+        
+        <section id="ai-integration">
+          <AIIntegrationSection />
+        </section>
+        
+        <section id="testimonials">
+          <TestimonialsSection />
+        </section>
+        
+        <section id="cta">
+          <CTASection />
+        </section>
+      </main>
+      
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 };
