@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Star, Award, Trophy, Medal, Quote } from 'lucide-react';
@@ -136,6 +137,14 @@ const TestimonialsSection: React.FC = () => {
     setActiveIndex(index);
   };
 
+  // Create a function to handle the Carousel onSelect event
+  const handleCarouselSelect = (event: React.SyntheticEvent<HTMLDivElement>) => {
+    // Get the current slide index from the Carousel API
+    // Since we can't directly get the index from the event,
+    // we'll need to use the activeIndex state that's already being tracked
+    // This is a workaround since we can't modify the Carousel component
+  };
+
   const testimonials = [
     {
       quote: "The AI-enhanced video transcription makes finding key concepts a breeze. This platform is revolutionizing how we learn!",
@@ -245,11 +254,12 @@ const TestimonialsSection: React.FC = () => {
         <div className="md:hidden">
           <Carousel 
             className="w-full"
-            onSelect={handleSlideChange}
+            // Fix: Remove the onSelect prop as it expects a ReactEventHandler
+            // but we're trying to pass a function that accepts a number
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index}>
+                <CarouselItem key={index} onFocus={() => setActiveIndex(index)}>
                   <div className="p-1">
                     <Testimonial
                       quote={testimonial.quote}
