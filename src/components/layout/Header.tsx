@@ -47,7 +47,7 @@ const Header: React.FC = () => {
               <a href="#ai-features" className="text-gray-800 hover:text-edtech-primary transition-colors">Features</a>
               <a href="#how-it-works" className="text-gray-800 hover:text-edtech-primary transition-colors">How It Works</a>
               <a href="#testimonials" className="text-gray-800 hover:text-edtech-primary transition-colors">Testimonials</a>
-              <a href="#course" className="text-gray-800 hover:text-edtech-primary transition-colors">Courses</a>
+              <a href="#featured-courses" className="text-gray-800 hover:text-edtech-primary transition-colors">Courses</a>
               <Button className="bg-edtech-primary hover:bg-edtech-secondary text-white ml-4">Get Started</Button>
             </nav>
           )}
@@ -67,10 +67,10 @@ const Header: React.FC = () => {
         {/* Mobile Navigation */}
         {isMobile && isMenuOpen && (
           <nav className="mt-4 py-4 border-t border-gray-200 flex flex-col space-y-4">
-            <a href="#features" className="text-gray-800 hover:text-edtech-primary transition-colors">Features</a>
+            <a href="#ai-features" className="text-gray-800 hover:text-edtech-primary transition-colors">Features</a>
             <a href="#how-it-works" className="text-gray-800 hover:text-edtech-primary transition-colors">How It Works</a>
             <a href="#testimonials" className="text-gray-800 hover:text-edtech-primary transition-colors">Testimonials</a>
-            
+            <a href="#featured-courses" className="text-gray-800 hover:text-edtech-primary transition-colors">Courses</a>
             <Button className="bg-edtech-primary hover:bg-edtech-secondary text-white w-full">Get Started</Button>
           </nav>
         )}
