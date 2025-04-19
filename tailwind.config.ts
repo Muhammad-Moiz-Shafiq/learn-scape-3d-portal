@@ -64,10 +64,10 @@ export default {
 				},
 				// EdTech custom colors
 				edtech: {
-					primary: '#9b87f5',
-					secondary: '#7E69AB',
+					primary: '#0078ff',
+					secondary: '#4299e1',
 					dark: '#1A1F2C',
-					light: '#E5DEFF',
+					light: '#E5F2FF',
 					blue: '#D3E4FD',
 					accent: '#1EAEDB',
 					orange: '#F97316',

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Upload, FileAudio, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
@@ -44,18 +43,17 @@ const StepCard: React.FC<StepCardProps> = ({ icon, title, description, color, in
   return (
     <div 
       ref={cardRef} 
-      className={`relative p-6 md:p-8 rounded-xl backdrop-blur-lg border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-2 group`}
-      style={{ backgroundColor: `${color}15` }}
+      className={`relative p-6 md:p-8 rounded-xl backdrop-blur-lg border border-gray-200 shadow-lg transition-all duration-300 hover:-translate-y-2 group bg-white`}
     >
       <div className={`mb-6 p-4 rounded-full bg-gradient-to-br from-${color}/20 to-${color}/10 inline-block`}>
-        <div className="text-3xl text-white">{icon}</div>
+        <div className="text-3xl">{icon}</div>
       </div>
-      <h3 className={`text-2xl font-bold mb-4 text-white`}>{title}</h3>
-      <p className="text-white/70">{description}</p>
+      <h3 className={`text-2xl font-bold mb-4 text-gray-800`}>{title}</h3>
+      <p className="text-gray-600">{description}</p>
       
       {/* Connection Line */}
       {index < 2 && (
-        <div className="hidden md:block absolute top-1/2 -right-8 w-16 h-[2px] bg-gradient-to-r from-white/50 to-transparent"></div>
+        <div className="hidden md:block absolute top-1/2 -right-8 w-16 h-[2px] bg-gradient-to-r from-gray-300 to-transparent"></div>
       )}
       
       {/* Step Number */}
@@ -112,13 +110,13 @@ const HowItWorksSection: React.FC = () => {
   ];
 
   return (
-    <div ref={sectionRef} className="py-24 relative overflow-hidden">
+    <div ref={sectionRef} className="py-24 relative overflow-hidden bg-white">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-edtech-primary/50 to-transparent"></div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-edtech-primary/50 to-transparent"></div>
       
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-edtech-primary/20 rounded-full blur-[100px]"></div>
-      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-edtech-accent/20 rounded-full blur-[100px]"></div>
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-edtech-primary/10 rounded-full blur-[100px]"></div>
+      <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-edtech-accent/10 rounded-full blur-[100px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div ref={titleRef} className="text-center mb-16">
@@ -127,7 +125,7 @@ const HowItWorksSection: React.FC = () => {
               How It Works
             </span>
           </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Our seamless three-step process transforms traditional education into an interactive, 
             AI-enhanced learning experience.
           </p>

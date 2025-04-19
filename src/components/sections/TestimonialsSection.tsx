@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Star, Award, Trophy, Medal, Quote } from 'lucide-react';
@@ -55,14 +54,14 @@ const Testimonial: React.FC<TestimonialProps> = ({
   const Achievement = achievements[achievement].icon;
   
   return (
-    <Card className="relative h-full p-6 bg-white/5 backdrop-blur-lg border border-white/10 hover:border-edtech-primary/50 transition-all duration-300">
-      <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-edtech-dark/80 border border-white/10 flex items-center justify-center">
+    <Card className="relative h-full p-6 bg-white shadow-lg border border-gray-200 hover:border-edtech-primary/50 transition-all duration-300">
+      <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center">
         <Achievement className={`w-6 h-6 ${achievements[achievement].color}`} />
       </div>
       
       <Quote className="w-8 h-8 mb-4 text-edtech-primary/50" />
       
-      <p className="text-white/90 mb-6 italic">"{quote}"</p>
+      <p className="text-gray-700 mb-6 italic">"{quote}"</p>
       
       <div className="flex items-center">
         <Avatar className="h-12 w-12 border-2 border-edtech-primary/20">
@@ -70,8 +69,8 @@ const Testimonial: React.FC<TestimonialProps> = ({
         </Avatar>
         
         <div className="ml-4">
-          <h4 className="font-medium text-white">{author}</h4>
-          <p className="text-sm text-white/60">{role}</p>
+          <h4 className="font-medium text-gray-800">{author}</h4>
+          <p className="text-sm text-gray-600">{role}</p>
         </div>
         
         <div className="ml-auto flex items-center">
@@ -162,11 +161,11 @@ const TestimonialsSection: React.FC = () => {
   ] as const;
 
   return (
-    <div ref={sectionRef} className="py-24 relative overflow-hidden bg-gradient-to-br from-edtech-dark to-black">
+    <div ref={sectionRef} className="py-24 relative overflow-hidden bg-white">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute -top-48 -right-48 w-96 h-96 bg-edtech-primary/20 rounded-full blur-[100px]"></div>
-        <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-edtech-accent/20 rounded-full blur-[100px]"></div>
+        <div className="absolute -top-48 -right-48 w-96 h-96 bg-edtech-primary/10 rounded-full blur-[100px]"></div>
+        <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-edtech-accent/10 rounded-full blur-[100px]"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -177,7 +176,7 @@ const TestimonialsSection: React.FC = () => {
               {" "}Love Us
             </span>
           </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Join thousands of satisfied students and educators who are transforming 
             their learning experience with our AI-powered platform.
           </p>
@@ -217,7 +216,7 @@ const TestimonialsSection: React.FC = () => {
             <div
               key={index}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === activeIndex ? 'bg-edtech-primary' : 'bg-white/20'
+                index === activeIndex ? 'bg-edtech-primary' : 'bg-gray-300'
               }`}
             ></div>
           ))}

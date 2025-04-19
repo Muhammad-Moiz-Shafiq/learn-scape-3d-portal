@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,17 +13,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* EdTech primary color - purple */
-    --primary: 256 81% 74%;
+    /* EdTech primary color - blue */
+    --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 252 27% 54%;
+    --secondary: 210 70% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 250 100% 97%;
+    --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 196 74% 49%;
+    --accent: 210 100% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,18 +31,18 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 256 81% 74%;
+    --ring: 210 100% 50%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary: 210 100% 50%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 210 100% 50%;
   }
 
   .dark {
@@ -56,16 +55,16 @@
     --popover: 225 25% 16%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 256 81% 74%;
+    --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 252 27% 54%;
+    --secondary: 210 70% 60%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 223 25% 25%;
     --muted-foreground: 215 20.2% 75%;
 
-    --accent: 196 74% 49%;
+    --accent: 210 100% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
@@ -73,16 +72,16 @@
 
     --border: 223 25% 25%;
     --input: 223 25% 25%;
-    --ring: 256 81% 74%;
+    --ring: 210 100% 50%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary: 210 100% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 210 100% 50%;
   }
 }
 
@@ -98,8 +97,8 @@
   /* Grid Pattern for Tech Background */
   .grid-pattern {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 120, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 120, 255, 0.05) 1px, transparent 1px);
     background-size: 20px 20px;
     width: 100%;
     height: 100%;
@@ -127,13 +126,13 @@
 
 @keyframes glowing {
   0% {
-    box-shadow: 0 0 5px rgba(155, 135, 245, 0.5);
+    box-shadow: 0 0 5px rgba(0, 120, 255, 0.5);
   }
   50% {
-    box-shadow: 0 0 20px rgba(155, 135, 245, 0.8);
+    box-shadow: 0 0 20px rgba(0, 120, 255, 0.8);
   }
   100% {
-    box-shadow: 0 0 5px rgba(155, 135, 245, 0.5);
+    box-shadow: 0 0 5px rgba(0, 120, 255, 0.5);
   }
 }
 
@@ -149,7 +148,7 @@
   right: -3px;
   bottom: -3px;
   border-radius: inherit;
-  background: linear-gradient(45deg, #9b87f5, #1EAEDB, #9b87f5);
+  background: linear-gradient(45deg, #0078ff, #1EAEDB, #0078ff);
   z-index: -1;
   animation: rotate-slow 3s linear infinite;
   opacity: 0.7;

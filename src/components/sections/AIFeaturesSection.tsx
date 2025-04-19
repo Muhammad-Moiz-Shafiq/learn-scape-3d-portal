@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Brain, FileText, FileSearch, MessageSquare } from 'lucide-react';
 import gsap from 'gsap';
@@ -94,13 +93,13 @@ const AIFeatureCard: React.FC<{
   return (
     <div 
       ref={cardRef}
-      className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10 hover:border-edtech-primary/50 transition-all duration-300"
+      className="bg-white shadow-lg rounded-xl p-6 border border-gray-200 hover:border-edtech-primary/50 transition-all duration-300"
     >
       <div className="mb-4 p-3 rounded-full bg-edtech-primary/20 inline-block">
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
-      <p className="text-white/70">{description}</p>
+      <h3 className="text-xl font-bold mb-3 text-gray-800">{title}</h3>
+      <p className="text-gray-600">{description}</p>
     </div>
   );
 };
@@ -156,8 +155,8 @@ const AIFeaturesSection: React.FC = () => {
   
   // Connection points for the brain
   const connections = [
-    { startX: 150, startY: 100, endX: 80, endY: 50, color: "#9b87f5", delay: 0.5 },
-    { startX: 150, startY: 180, endX: 80, endY: 230, color: "#9b87f5", delay: 1.2 },
+    { startX: 150, startY: 100, endX: 80, endY: 50, color: "#0078ff", delay: 0.5 },
+    { startX: 150, startY: 180, endX: 80, endY: 230, color: "#0078ff", delay: 1.2 },
     { startX: 250, startY: 100, endX: 320, endY: 50, color: "#1EAEDB", delay: 1.8 },
     { startX: 250, startY: 180, endX: 320, endY: 230, color: "#1EAEDB", delay: 0.8 }
   ];
@@ -190,7 +189,7 @@ const AIFeaturesSection: React.FC = () => {
   ];
 
   return (
-    <div ref={sectionRef} className="py-24 bg-gradient-to-b from-black to-edtech-dark relative overflow-hidden">
+    <div ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-edtech-primary/10 blur-[150px] rounded-full"></div>
       
@@ -201,7 +200,7 @@ const AIFeaturesSection: React.FC = () => {
               AI-Powered Features
             </span>
           </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Our cutting-edge AI technology transforms how you teach and learn, 
             making education more accessible, engaging, and effective.
           </p>
@@ -225,19 +224,19 @@ const AIFeaturesSection: React.FC = () => {
                      M200,250 C180,230 180,210 200,190 C220,210 220,230 200,250 Z
                      M100,150 C120,140 140,140 160,150 C140,160 120,160 100,150 Z
                      M300,150 C280,140 260,140 240,150 C260,160 280,160 300,150 Z"
-                  stroke="#9b87f5"
+                  stroke="#0078ff"
                   strokeWidth="2"
                   fill="none"
                 />
                 
                 {/* Neural points */}
-                <circle cx="200" cy="80" r="8" fill="#9b87f5" className="animate-pulse" />
+                <circle cx="200" cy="80" r="8" fill="#0078ff" className="animate-pulse" />
                 <circle cx="200" cy="220" r="8" fill="#1EAEDB" className="animate-pulse" />
                 <circle cx="130" cy="150" r="8" fill="#F97316" className="animate-pulse" />
-                <circle cx="270" cy="150" r="8" fill="#9b87f5" className="animate-pulse" />
+                <circle cx="270" cy="150" r="8" fill="#0078ff" className="animate-pulse" />
                 <circle cx="180" cy="120" r="6" fill="#1EAEDB" className="animate-pulse" />
                 <circle cx="220" cy="120" r="6" fill="#F97316" className="animate-pulse" />
-                <circle cx="180" cy="180" r="6" fill="#9b87f5" className="animate-pulse" />
+                <circle cx="180" cy="180" r="6" fill="#0078ff" className="animate-pulse" />
                 <circle cx="220" cy="180" r="6" fill="#1EAEDB" className="animate-pulse" />
               </svg>
               
@@ -246,29 +245,40 @@ const AIFeaturesSection: React.FC = () => {
                 <div className="w-40 h-40 rounded-full bg-edtech-primary/20 blur-2xl animate-pulse"></div>
               </div>
               
-              {/* Particles */}
+              {/* Data particles */}
               <div className="absolute inset-0">
-                {Array.from({ length: 15 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-1.5 h-1.5 rounded-full bg-edtech-primary/80"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                      animationDelay: `${Math.random() * 5}s`,
-                      animationDuration: `${3 + Math.random() * 7}s`
-                    }}
-                  ></div>
-                ))}
+                {[...Array(15)].map((_, i) => {
+                  const size = Math.random() * 4 + 2;
+                  const x = Math.random() * 400;
+                  const y = Math.random() * 300;
+                  const delay = Math.random() * 5;
+                  
+                  return (
+                    <div 
+                      key={i}
+                      className="absolute rounded-full bg-edtech-primary animate-pulse"
+                      style={{ 
+                        width: `${size}px`, 
+                        height: `${size}px`, 
+                        left: `${x}px`, 
+                        top: `${y}px`,
+                        animationDelay: `${delay}s`,
+                        opacity: Math.random() * 0.5 + 0.3
+                      }}
+                    ></div>
+                  );
+                })}
               </div>
             </div>
           </div>
           
-          {/* AI Features Grid */}
-          <div className="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {features.map((feature, index) => (
-              <AIFeatureCard key={index} {...feature} />
-            ))}
+          {/* Features Content */}
+          <div className="w-full md:w-1/2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {features.map((feature, index) => (
+                <AIFeatureCard key={index} {...feature} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

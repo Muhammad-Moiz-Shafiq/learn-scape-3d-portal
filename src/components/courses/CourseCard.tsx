@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -36,7 +35,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   return (
     <Card 
       ref={cardRef}
-      className="overflow-hidden bg-white/5 backdrop-blur-lg border-white/10 hover:border-edtech-primary/50 transition-all duration-300"
+      className="overflow-hidden bg-white shadow-lg border-gray-200 hover:border-edtech-primary/50 transition-all duration-300"
     >
       <div className="relative h-48 overflow-hidden">
         <div 
@@ -58,10 +57,10 @@ const CourseCard: React.FC<CourseCardProps> = ({
       </div>
       
       <div className="p-5">
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-white/70 mb-4">by {instructor}</p>
+        <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
+        <p className="text-gray-600 mb-4">by {instructor}</p>
         
-        <div className="flex justify-between text-sm text-white/70 mb-4">
+        <div className="flex justify-between text-sm text-gray-600 mb-4">
           <div className="flex items-center">
             <Users size={16} className="mr-1" />
             <span>{students.toLocaleString()}</span>

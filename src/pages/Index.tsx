@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -20,7 +19,7 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="min-h-screen bg-edtech-dark">
+    <div className="min-h-screen bg-white">
       <Header />
       
       <main>

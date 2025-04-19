@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Github, Twitter, Facebook, Instagram, Mail } from 'lucide-react';
 
@@ -6,9 +5,9 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-edtech-dark text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-12 gap-12">
           {/* Brand */}
-          <div className="col-span-1 md:col-span-1 lg:col-span-1">
+          <div className="col-span-12 md:col-span-4">
             <a href="#" className="inline-block mb-4">
               <span className="text-3xl font-bold bg-gradient-to-r from-edtech-primary to-edtech-accent text-transparent bg-clip-text">
                 EdTech
@@ -33,28 +32,21 @@ const Footer: React.FC = () => {
             </div>
           </div>
           
+          {/* Empty space */}
+          <div className="hidden md:block md:col-span-2"></div>
+          
           {/* Links */}
-          <div>
+          <div className="col-span-6 md:col-span-3">
             <h4 className="text-lg font-semibold mb-4">Platform</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-edtech-primary transition-colors">Features</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-edtech-primary transition-colors">How it works</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-edtech-primary transition-colors">Pricing</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-edtech-primary transition-colors">Testimonials</a></li>
+              <li><a href="#features" className="text-gray-400 hover:text-edtech-primary transition-colors">Features</a></li>
+              <li><a href="#how-it-works" className="text-gray-400 hover:text-edtech-primary transition-colors">How it works</a></li>
+              <li><a href="#testimonials" className="text-gray-400 hover:text-edtech-primary transition-colors">Testimonials</a></li>
+              <li><a href="#ai-features" className="text-gray-400 hover:text-edtech-primary transition-colors">AI features</a></li>
             </ul>
           </div>
           
-          <div>
-            <h4 className="text-lg font-semibold mb-4">For Educators</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-edtech-primary transition-colors">Create courses</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-edtech-primary transition-colors">Analytics</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-edtech-primary transition-colors">Community tools</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-edtech-primary transition-colors">AI features</a></li>
-            </ul>
-          </div>
-          
-          <div>
+          <div className="col-span-6 md:col-span-3">
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <ul className="space-y-2">
               <li className="flex items-center text-gray-400">

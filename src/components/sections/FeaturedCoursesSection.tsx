@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { featuredCourses } from '@/data/courses';
@@ -31,11 +30,11 @@ const FeaturedCoursesSection: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="py-24 relative overflow-hidden bg-edtech-dark">
+    <div ref={sectionRef} className="py-24 relative overflow-hidden bg-white">
       {/* Background elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-edtech-primary/50 to-transparent"></div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-edtech-primary/50 to-transparent"></div>
-      <div className="absolute -top-48 -left-48 w-96 h-96 bg-edtech-accent/20 rounded-full blur-[100px]"></div>
+      <div className="absolute -top-48 -left-48 w-96 h-96 bg-edtech-accent/10 rounded-full blur-[100px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div ref={titleRef}>

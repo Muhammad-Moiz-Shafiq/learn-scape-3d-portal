@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from 'lucide-react';
@@ -41,7 +40,7 @@ const CTASection: React.FC = () => {
   return (
     <div 
       ref={sectionRef} 
-      className="relative py-32 overflow-hidden"
+      className="relative py-32 overflow-hidden bg-white"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 z-0">
@@ -49,12 +48,12 @@ const CTASection: React.FC = () => {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 right-0 bottom-0 grid grid-cols-12 gap-4">
             {Array.from({ length: 13 }).map((_, i) => (
-              <div key={i} className="border-l border-white h-full"></div>
+              <div key={i} className="border-l border-gray-400 h-full"></div>
             ))}
           </div>
           <div className="absolute top-0 left-0 right-0 bottom-0 grid grid-rows-12 gap-4">
             {Array.from({ length: 13 }).map((_, i) => (
-              <div key={i} className="border-t border-white w-full"></div>
+              <div key={i} className="border-t border-gray-400 w-full"></div>
             ))}
           </div>
         </div>
@@ -85,15 +84,15 @@ const CTASection: React.FC = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div 
           ref={contentRef}
-          className="max-w-4xl mx-auto bg-black/50 backdrop-blur-xl p-12 rounded-xl border border-white/10 shadow-2xl"
+          className="max-w-4xl mx-auto bg-white/90 backdrop-blur-xl p-12 rounded-xl border border-gray-200 shadow-xl"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center text-gray-800">
             Start Your <span className="bg-gradient-to-r from-edtech-primary to-edtech-accent text-transparent bg-clip-text">
               Learning Journey
             </span> Today
           </h2>
           
-          <p className="text-xl text-white/80 mb-12 text-center max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-12 text-center max-w-2xl mx-auto">
             Join thousands of students and educators already transforming their
             learning and teaching experience with our cutting-edge EdTech platform.
           </p>
@@ -107,15 +106,15 @@ const CTASection: React.FC = () => {
               <Sparkles className="mr-2 h-6 w-6" /> Start Learning Today
             </Button>
             
-            <p className="text-white/60 text-center mt-6">
+            <p className="text-gray-500 text-center mt-6">
               14-day free trial. No credit card required.
             </p>
           </div>
         </div>
       </div>
       
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-edtech-dark/90 via-edtech-dark/80 to-black/80 z-0"></div>
+      {/* Light gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/60 to-white/80 z-0"></div>
     </div>
   );
 };

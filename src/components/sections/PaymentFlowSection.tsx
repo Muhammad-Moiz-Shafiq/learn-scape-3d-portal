@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { CreditCard, Coins, ShieldCheck, Lock } from 'lucide-react';
 import gsap from 'gsap';
@@ -105,7 +104,7 @@ const PaymentFlowSection: React.FC = () => {
     
     // Portal glow effect
     gsap.to(portalRef.current, {
-      boxShadow: "0 0 30px 5px rgba(155, 135, 245, 0.5)",
+      boxShadow: "0 0 30px 5px rgba(0, 120, 255, 0.5)",
       repeat: -1,
       yoyo: true,
       duration: 2,
@@ -114,10 +113,10 @@ const PaymentFlowSection: React.FC = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="py-24 bg-gradient-to-b from-black to-edtech-dark relative overflow-hidden">
+    <div ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-edtech-primary/50 to-transparent"></div>
-      <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-edtech-accent/20 rounded-full blur-[100px]"></div>
+      <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-edtech-accent/10 rounded-full blur-[100px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div ref={titleRef} className="text-center mb-16">
@@ -126,7 +125,7 @@ const PaymentFlowSection: React.FC = () => {
               Seamless Payment Process
             </span>
           </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Quick, secure, and hassle-free payment options that give you instant 
             access to premium courses and features.
           </p>
@@ -136,7 +135,7 @@ const PaymentFlowSection: React.FC = () => {
           {/* Payment Animation */}
           <div className="order-2 lg:order-1 relative flex justify-center items-center h-[400px]">
             {/* Payment Portal */}
-            <div ref={portalRef} className="relative w-64 h-64 rounded-full bg-gradient-to-br from-edtech-primary/30 to-edtech-accent/30 border border-white/10 flex items-center justify-center overflow-hidden perspective-[1000px]">
+            <div ref={portalRef} className="relative w-64 h-64 rounded-full bg-gradient-to-br from-edtech-primary/30 to-edtech-accent/30 border border-gray-200 flex items-center justify-center overflow-hidden perspective-[1000px]">
               {/* Inner Portal Glow */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-40 h-40 rounded-full bg-edtech-primary/20 blur-xl animate-pulse"></div>
@@ -145,19 +144,19 @@ const PaymentFlowSection: React.FC = () => {
               {/* Portal Rings */}
               <div className="absolute w-full h-full rounded-full border-2 border-edtech-primary/30 animate-spin" style={{ animationDuration: '15s' }}></div>
               <div className="absolute w-3/4 h-3/4 rounded-full border border-edtech-accent/40 animate-spin" style={{ animationDuration: '10s', animationDirection: 'reverse' }}></div>
-              <div className="absolute w-1/2 h-1/2 rounded-full border border-white/20 animate-spin" style={{ animationDuration: '5s' }}></div>
+              <div className="absolute w-1/2 h-1/2 rounded-full border border-gray-300 animate-spin" style={{ animationDuration: '5s' }}></div>
               
               {/* Access Text */}
               <div className="absolute inset-x-0 bottom-8 text-center">
-                <p className="text-white/80 text-sm font-mono">ACCESS GRANTED</p>
+                <p className="text-gray-800 text-sm font-mono">ACCESS GRANTED</p>
               </div>
               
               {/* Course Content (At the bottom of the portal) */}
-              <div className="absolute bottom-0 left-0 right-0 h-16 flex justify-center items-center bg-black/50 backdrop-blur-sm">
+              <div className="absolute bottom-0 left-0 right-0 h-16 flex justify-center items-center bg-gray-100 backdrop-blur-sm">
                 <div className="w-10 h-10 bg-edtech-accent/30 rounded-md mr-2"></div>
                 <div className="flex flex-col">
-                  <span className="text-white text-xs font-bold">Premium Course</span>
-                  <span className="text-white/60 text-xs">Unlocked</span>
+                  <span className="text-gray-800 text-xs font-bold">Premium Course</span>
+                  <span className="text-gray-600 text-xs">Unlocked</span>
                 </div>
               </div>
             </div>
@@ -165,40 +164,40 @@ const PaymentFlowSection: React.FC = () => {
             {/* Credit Card */}
             <div 
               ref={cardRef}
-              className="absolute top-12 w-72 h-44 rounded-xl bg-gradient-to-br from-edtech-dark/80 to-black/80 border border-white/10 backdrop-blur-lg shadow-xl p-4 perspective-[1000px] transform-gpu"
+              className="absolute top-12 w-72 h-44 rounded-xl bg-gradient-to-br from-edtech-primary to-edtech-accent border border-white shadow-xl p-4 perspective-[1000px] transform-gpu"
             >
               {/* Card Chip */}
-              <div className="w-10 h-8 bg-edtech-primary/50 rounded-md mb-4"></div>
+              <div className="w-10 h-8 bg-white/50 rounded-md mb-4"></div>
               
               {/* Card Number */}
               <div className="flex justify-between mb-4">
-                <div className="w-12 h-2 bg-white/50 rounded-full"></div>
-                <div className="w-12 h-2 bg-white/50 rounded-full"></div>
-                <div className="w-12 h-2 bg-white/50 rounded-full"></div>
-                <div className="w-12 h-2 bg-white/50 rounded-full"></div>
+                <div className="w-12 h-2 bg-white/80 rounded-full"></div>
+                <div className="w-12 h-2 bg-white/80 rounded-full"></div>
+                <div className="w-12 h-2 bg-white/80 rounded-full"></div>
+                <div className="w-12 h-2 bg-white/80 rounded-full"></div>
               </div>
               
               {/* Card Details */}
               <div className="flex justify-between items-end mt-8">
                 <div>
-                  <div className="text-xs text-white/60 mb-1">CARDHOLDER</div>
-                  <div className="w-20 h-2 bg-white/50 rounded-full"></div>
+                  <div className="text-xs text-white mb-1">CARDHOLDER</div>
+                  <div className="w-20 h-2 bg-white/80 rounded-full"></div>
                 </div>
                 <div>
-                  <div className="text-xs text-white/60 mb-1">EXPIRES</div>
-                  <div className="w-10 h-2 bg-white/50 rounded-full"></div>
+                  <div className="text-xs text-white mb-1">EXPIRES</div>
+                  <div className="w-10 h-2 bg-white/80 rounded-full"></div>
                 </div>
               </div>
               
               {/* Card Network Logo */}
               <div className="absolute top-4 right-4">
-                <div className="w-10 h-10 rounded-full bg-edtech-accent/30 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center">
                   <Lock size={16} className="text-white" />
                 </div>
               </div>
               
               {/* Hologram */}
-              <div className="absolute bottom-4 right-4 w-12 h-8 bg-gradient-to-r from-edtech-primary/30 to-edtech-accent/30 rounded-md" 
+              <div className="absolute bottom-4 right-4 w-12 h-8 bg-gradient-to-r from-white/30 to-white/30 rounded-md" 
                    style={{ backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%)' }}>
               </div>
             </div>
@@ -228,43 +227,43 @@ const PaymentFlowSection: React.FC = () => {
           
           {/* Payment Steps */}
           <div ref={stepsRef} className="order-1 lg:order-2 space-y-8">
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10 flex">
+            <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200 flex">
               <div className="mr-4 p-3 rounded-full bg-gradient-to-br from-edtech-primary/20 to-edtech-primary/10">
                 <CreditCard className="text-edtech-primary h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2 text-white">Choose Your Plan</h3>
-                <p className="text-white/70">Select from flexible subscription options or pay per course. Find the perfect plan for your learning journey.</p>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">Choose Your Plan</h3>
+                <p className="text-gray-600">Select from flexible subscription options or pay per course. Find the perfect plan for your learning journey.</p>
               </div>
             </div>
             
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10 flex">
+            <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200 flex">
               <div className="mr-4 p-3 rounded-full bg-gradient-to-br from-edtech-accent/20 to-edtech-accent/10">
                 <Lock className="text-edtech-accent h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2 text-white">Secure Checkout</h3>
-                <p className="text-white/70">Our encrypted payment system ensures your financial information stays protected.</p>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">Secure Checkout</h3>
+                <p className="text-gray-600">Our encrypted payment system ensures your financial information stays protected.</p>
               </div>
             </div>
             
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10 flex">
-              <div className="mr-4 p-3 rounded-full bg-gradient-to-br from-edtech-orange/20 to-edtech-orange/10">
-                <Coins className="text-edtech-orange h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2 text-white">Instant Access</h3>
-                <p className="text-white/70">Gain immediate access to all course materials as soon as your payment is processed.</p>
-              </div>
-            </div>
-            
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10 flex">
-              <div className="mr-4 p-3 rounded-full bg-gradient-to-br from-green-500/20 to-green-500/10">
+            <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200 flex">
+              <div className="mr-4 p-3 rounded-full bg-gradient-to-br from-green-400/20 to-green-500/10">
                 <ShieldCheck className="text-green-500 h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2 text-white">Satisfaction Guarantee</h3>
-                <p className="text-white/70">Not satisfied? Our 30-day money-back guarantee ensures a risk-free learning experience.</p>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">Instant Access</h3>
+                <p className="text-gray-600">Gain immediate access to your courses and premium features right after payment confirmation.</p>
+              </div>
+            </div>
+            
+            <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200 flex">
+              <div className="mr-4 p-3 rounded-full bg-gradient-to-br from-yellow-400/20 to-yellow-500/10">
+                <Coins className="text-yellow-500 h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">Money-Back Guarantee</h3>
+                <p className="text-gray-600">Not satisfied with your purchase? Get a full refund within 30 days, no questions asked.</p>
               </div>
             </div>
           </div>

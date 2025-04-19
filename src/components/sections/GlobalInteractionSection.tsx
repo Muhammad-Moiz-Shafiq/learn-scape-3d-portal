@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Globe, Users, MessageSquare } from 'lucide-react';
 import gsap from 'gsap';
@@ -61,7 +60,7 @@ const GlobeConnection: React.FC<GlobeConnectionProps> = ({
     <path 
       ref={pathRef}
       d={path} 
-      stroke="#9b87f5" 
+      stroke="#0078ff" 
       strokeWidth="2" 
       fill="none" 
       strokeLinecap="round"
@@ -145,7 +144,7 @@ const GlobalInteractionSection: React.FC = () => {
   ];
 
   return (
-    <div ref={sectionRef} className="py-20 relative overflow-hidden bg-edtech-dark">
+    <div ref={sectionRef} className="py-20 relative overflow-hidden bg-white">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-edtech-accent/10 blur-[100px] rounded-full"></div>
       
@@ -157,7 +156,7 @@ const GlobalInteractionSection: React.FC = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-[300px] h-[300px] rounded-full border border-edtech-primary/30 flex items-center justify-center perspective-[1000px]">
                 {/* Globe Sphere */}
-                <div className="absolute w-full h-full rounded-full border-2 border-edtech-primary/20 bg-edtech-dark">
+                <div className="absolute w-full h-full rounded-full border-2 border-edtech-primary/20 bg-gray-100">
                   {/* Grid lines */}
                   <div className="absolute inset-0 rounded-full border-2 border-edtech-primary/10"></div>
                   
@@ -220,7 +219,7 @@ const GlobalInteractionSection: React.FC = () => {
                   Global Learning Community
                 </span>
               </h2>
-              <p className="text-xl text-white/70">
+              <p className="text-xl text-gray-700">
                 Join thousands of students and educators from around the world. 
                 Connect, collaborate, and learn together in our interactive global community.
               </p>
@@ -228,28 +227,28 @@ const GlobalInteractionSection: React.FC = () => {
             
             {/* Stats */}
             <div ref={statsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
+              <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200">
                 <div className="flex items-center mb-3">
                   <Users className="text-edtech-primary mr-2" />
-                  <h3 className="text-xl font-semibold text-white">100K+</h3>
+                  <h3 className="text-xl font-semibold text-gray-800">100K+</h3>
                 </div>
-                <p className="text-white/70">Active students globally</p>
+                <p className="text-gray-600">Active students globally</p>
               </div>
               
-              <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
+              <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200">
                 <div className="flex items-center mb-3">
                   <Globe className="text-edtech-accent mr-2" />
-                  <h3 className="text-xl font-semibold text-white">120+</h3>
+                  <h3 className="text-xl font-semibold text-gray-800">120+</h3>
                 </div>
-                <p className="text-white/70">Countries represented</p>
+                <p className="text-gray-600">Countries represented</p>
               </div>
               
-              <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10">
+              <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200">
                 <div className="flex items-center mb-3">
                   <MessageSquare className="text-edtech-orange mr-2" />
-                  <h3 className="text-xl font-semibold text-white">2M+</h3>
+                  <h3 className="text-xl font-semibold text-gray-800">2M+</h3>
                 </div>
-                <p className="text-white/70">Messages exchanged daily</p>
+                <p className="text-gray-600">Messages exchanged daily</p>
               </div>
             </div>
           </div>

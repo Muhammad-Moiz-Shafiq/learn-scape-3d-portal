@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import gsap from 'gsap';
@@ -90,7 +89,7 @@ const HeroSection: React.FC = () => {
   return (
     <div 
       ref={heroRef} 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
     >
       {/* Background Particles */}
       <div className="absolute inset-0 z-0">
@@ -106,7 +105,7 @@ const HeroSection: React.FC = () => {
           <div className="flex-1">
             <h1 
               ref={headingRef}
-              className="text-5xl md:text-7xl font-bold text-white mb-8 drop-shadow-lg"
+              className="text-5xl md:text-7xl font-bold text-gray-800 mb-8 drop-shadow-lg"
             >
               The Future of <span className="bg-gradient-to-r from-edtech-primary to-edtech-accent text-transparent bg-clip-text">
                 Education
@@ -114,13 +113,13 @@ const HeroSection: React.FC = () => {
             </h1>
             
             <div className="flex items-baseline gap-4 mb-8">
-              <span className="text-3xl md:text-4xl font-bold text-white">
+              <span className="text-3xl md:text-4xl font-bold text-gray-800">
                 <div ref={subHeadingRef} className="inline h-12 min-w-[150px]"></div>
               </span>
               <span className="animate-pulse text-edtech-primary text-4xl">|</span>
             </div>
             
-            <p className="text-xl text-white/80 mb-8">
+            <p className="text-xl text-gray-600 mb-8">
               AI-powered courses, auto-transcribed videos, and real-time 
               interaction with tutors. Experience the next generation of learning.
             </p>
@@ -151,7 +150,7 @@ const HeroSection: React.FC = () => {
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-edtech-primary to-edtech-accent opacity-30 blur-md animate-pulse-soft"></div>
                 
                 {/* Professor Silhouette */}
-                <div className="absolute inset-0 rounded-full bg-edtech-dark flex items-center justify-center overflow-hidden border-2 border-edtech-primary/30">
+                <div className="absolute inset-0 rounded-full bg-gray-900 flex items-center justify-center overflow-hidden border-2 border-edtech-primary/30">
                   {/* Abstract Professor Shape */}
                   <div className="w-full h-full relative">
                     {/* Head */}
@@ -172,7 +171,7 @@ const HeroSection: React.FC = () => {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-edtech-primary"></div>
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-edtech-accent"></div>
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-edtech-orange"></div>
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white"></div>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500"></div>
                 </div>
                 
                 {/* Data Streams */}
@@ -187,7 +186,7 @@ const HeroSection: React.FC = () => {
               </div>
               
               {/* Glowing Bottom Text */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-edtech-dark border border-edtech-primary/30">
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-gray-900 border border-edtech-primary/30">
                 <p className="text-edtech-primary text-xs sm:text-sm font-mono">AI Professor v2.25 // online</p>
               </div>
             </div>
@@ -195,8 +194,8 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
       
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-edtech-dark/40 to-edtech-dark z-0"></div>
+      {/* Gradient overlay - removed dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/0 to-white/0 z-0"></div>
       
       {/* Tech Grid */}
       <div className="absolute inset-0 z-0 opacity-10">

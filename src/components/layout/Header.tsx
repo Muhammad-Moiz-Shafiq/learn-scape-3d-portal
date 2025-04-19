@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
@@ -29,7 +28,7 @@ const Header: React.FC = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'py-2 bg-white/10 dark:bg-black/30 backdrop-blur-lg border-b border-white/10' 
+          ? 'py-2 bg-white/80 dark:bg-black/30 backdrop-blur-lg border-b border-gray-200' 
           : 'py-6 bg-transparent'
       }`}
     >
@@ -45,10 +44,10 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           {!isMobile && (
             <nav className="flex items-center space-x-8">
-              <a href="#features" className="text-white hover:text-edtech-primary transition-colors">Features</a>
-              <a href="#how-it-works" className="text-white hover:text-edtech-primary transition-colors">How It Works</a>
-              <a href="#testimonials" className="text-white hover:text-edtech-primary transition-colors">Testimonials</a>
-              <a href="#pricing" className="text-white hover:text-edtech-primary transition-colors">Pricing</a>
+              <a href="#ai-features" className="text-gray-800 hover:text-edtech-primary transition-colors">Features</a>
+              <a href="#how-it-works" className="text-gray-800 hover:text-edtech-primary transition-colors">How It Works</a>
+              <a href="#testimonials" className="text-gray-800 hover:text-edtech-primary transition-colors">Testimonials</a>
+              <a href="#course" className="text-gray-800 hover:text-edtech-primary transition-colors">Courses</a>
               <Button className="bg-edtech-primary hover:bg-edtech-secondary text-white ml-4">Get Started</Button>
             </nav>
           )}
@@ -57,7 +56,7 @@ const Header: React.FC = () => {
           {isMobile && (
             <Button 
               variant="ghost" 
-              className="text-white p-1" 
+              className="text-gray-800 p-1" 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -67,11 +66,11 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMobile && isMenuOpen && (
-          <nav className="mt-4 py-4 border-t border-white/10 flex flex-col space-y-4">
-            <a href="#features" className="text-white hover:text-edtech-primary transition-colors">Features</a>
-            <a href="#how-it-works" className="text-white hover:text-edtech-primary transition-colors">How It Works</a>
-            <a href="#testimonials" className="text-white hover:text-edtech-primary transition-colors">Testimonials</a>
-            <a href="#pricing" className="text-white hover:text-edtech-primary transition-colors">Pricing</a>
+          <nav className="mt-4 py-4 border-t border-gray-200 flex flex-col space-y-4">
+            <a href="#features" className="text-gray-800 hover:text-edtech-primary transition-colors">Features</a>
+            <a href="#how-it-works" className="text-gray-800 hover:text-edtech-primary transition-colors">How It Works</a>
+            <a href="#testimonials" className="text-gray-800 hover:text-edtech-primary transition-colors">Testimonials</a>
+            
             <Button className="bg-edtech-primary hover:bg-edtech-secondary text-white w-full">Get Started</Button>
           </nav>
         )}
