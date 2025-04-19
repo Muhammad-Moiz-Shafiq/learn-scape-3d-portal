@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Star, Award, Trophy, Medal, Quote } from 'lucide-react';
@@ -63,11 +62,9 @@ const Testimonial: React.FC<TestimonialProps> = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Background glow effect */}
       <div className={`absolute inset-0 bg-gradient-to-br from-edtech-primary/10 via-transparent to-edtech-accent/10 opacity-0 transition-opacity duration-500 ${hovered ? 'opacity-100' : ''}`}></div>
       
       <div className="relative z-10">
-        {/* Badge and level indicator */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center">
             <div className="text-edtech-primary mr-2">
@@ -84,12 +81,10 @@ const Testimonial: React.FC<TestimonialProps> = ({
           </div>
         </div>
         
-        {/* Quote */}
         <Quote className="text-edtech-primary/20 absolute top-4 right-4 h-16 w-16" />
         
         <p className="text-white/80 mb-8 relative z-10 text-lg">"{quote}"</p>
         
-        {/* Author */}
         <div className="flex items-center">
           <div className="mr-4">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-edtech-primary to-edtech-accent flex items-center justify-center overflow-hidden">
@@ -137,30 +132,34 @@ const TestimonialsSection: React.FC = () => {
     );
   }, []);
 
+  const handleSlideChange = (index: number) => {
+    setActiveIndex(index);
+  };
+
   const testimonials = [
     {
-      quote: "EdTech has transformed my teaching. The AI-enhanced videos let students find exactly what they need, and the real-time chat keeps everyone engaged.",
+      quote: "The AI-enhanced video transcription makes finding key concepts a breeze. This platform is revolutionizing how we learn!",
       author: "Dr. Sarah Johnson",
       role: "Professor of Computer Science",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
       level: 5,
-      badge: <Trophy className="h-5 w-5" />
+      badge: <Trophy className="h-5 w-5 text-yellow-400" />
     },
     {
-      quote: "As a working student, EdTech gives me the flexibility to learn at my own pace with resources that are actually engaging and interactive.",
+      quote: "Real-time chat with tutors has transformed my learning experience. I get instant help whenever I need it.",
       author: "Michael Chen",
       role: "Graduate Student",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       level: 3,
-      badge: <Award className="h-5 w-5" />
+      badge: <Award className="h-5 w-5 text-edtech-accent" />
     },
     {
-      quote: "The real-time interaction features have completely transformed my online teaching experience. It feels like we're all in the same room.",
+      quote: "The global learning community and interactive features make teaching more engaging than ever before.",
       author: "Prof. James Wilson",
       role: "Visiting Lecturer",
       avatar: "https://randomuser.me/api/portraits/men/46.jpg",
       level: 4,
-      badge: <Medal className="h-5 w-5" />
+      badge: <Medal className="h-5 w-5 text-edtech-primary" />
     },
     {
       quote: "I've tried many educational platforms, but EdTech truly stands out with its community-driven approach and cutting-edge technology.",
@@ -190,20 +189,18 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <div ref={sectionRef} className="py-24 bg-gradient-to-br from-edtech-dark/80 to-black relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-edtech-primary/10 blur-[100px] rounded-full"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-edtech-accent/10 blur-[100px] rounded-full"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-edtech-primary/10 blur-[100px] rounded-full animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-edtech-accent/10 blur-[100px] rounded-full animate-pulse"></div>
       
-      {/* Grid lines */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 right-0 bottom-0 grid grid-cols-6 gap-4">
+        <div className="absolute inset-0 grid grid-cols-6 gap-4">
           {Array.from({ length: 7 }).map((_, i) => (
-            <div key={i} className="border-l border-white h-full"></div>
+            <div key={i} className="border-l border-edtech-primary/30 h-full"></div>
           ))}
         </div>
-        <div className="absolute top-0 left-0 right-0 bottom-0 grid grid-rows-6 gap-4">
+        <div className="absolute inset-0 grid grid-rows-6 gap-4">
           {Array.from({ length: 7 }).map((_, i) => (
-            <div key={i} className="border-t border-white w-full"></div>
+            <div key={i} className="border-t border-edtech-primary/30 w-full"></div>
           ))}
         </div>
       </div>
@@ -220,7 +217,6 @@ const TestimonialsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Leaderboard-style header */}
         <div className="mb-8 flex items-center justify-between">
           <div className="flex items-center">
             <Trophy className="text-yellow-400 mr-2" />
@@ -231,7 +227,6 @@ const TestimonialsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Desktop Grid */}
         <div ref={carouselRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-[1000px] hidden md:grid">
           {testimonials.map((testimonial, index) => (
             <Testimonial
@@ -247,11 +242,10 @@ const TestimonialsSection: React.FC = () => {
           ))}
         </div>
         
-        {/* Mobile Carousel */}
         <div className="md:hidden">
           <Carousel 
             className="w-full"
-            onSelect={(index) => setActiveIndex(index)}
+            onSelect={handleSlideChange}
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
@@ -271,25 +265,24 @@ const TestimonialsSection: React.FC = () => {
               ))}
             </CarouselContent>
             <div className="flex justify-center mt-6 gap-8">
-              <CarouselPrevious />
-              <CarouselNext />
+              <CarouselPrevious className="bg-edtech-primary/20 hover:bg-edtech-primary/40 border-edtech-primary/50" />
+              <CarouselNext className="bg-edtech-primary/20 hover:bg-edtech-primary/40 border-edtech-primary/50" />
             </div>
           </Carousel>
           
-          {/* Carousel indicators */}
           <div className="flex justify-center mt-6 gap-2">
             {testimonials.map((_, index) => (
               <div 
                 key={index} 
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   index === activeIndex ? 'bg-edtech-primary scale-125' : 'bg-white/20'
                 }`}
+                onClick={() => handleSlideChange(index)}
               ></div>
             ))}
           </div>
         </div>
         
-        {/* Join CTA */}
         <div className="mt-16 text-center">
           <Button 
             size="lg"
