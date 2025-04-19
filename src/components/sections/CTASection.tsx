@@ -1,62 +1,16 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import gsap from 'gsap';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Text3D, PerspectiveCamera, Environment } from '@react-three/drei';
-import * as THREE from 'three';
-
-const AnimatedSphere = ({ position, color, size = 1, speed = 1 }) => {
-  const sphereRef = useRef<THREE.Mesh>(null);
-  
-  useFrame((state) => {
-    if (!sphereRef.current) return;
-    
-    // Animate sphere
-    sphereRef.current.position.y = Math.sin(state.clock.getElapsedTime() * speed) * 0.5;
-    sphereRef.current.rotation.y += 0.01 * speed;
-  });
-
-  return (
-    <Float speed={2} rotationIntensity={0.4} floatIntensity={0.6}>
-      <mesh ref={sphereRef} position={position}>
-        <sphereGeometry args={[size, 32, 32]} />
-        <meshStandardMaterial 
-          color={color} 
-          metalness={0.5}
-          roughness={0.2} 
-          emissive={color}
-          emissiveIntensity={0.2}
-        />
-      </mesh>
-    </Float>
-  );
-};
-
-const CTABg = () => {
-  return (
-    <Canvas style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
-      <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-      
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 10, 10]} intensity={1} />
-      
-      <Environment preset="city" />
-      
-      <AnimatedSphere position={[3, 1, -5]} color="#9b87f5" size={1.5} speed={0.8} />
-      <AnimatedSphere position={[-4, -2, -10]} color="#1EAEDB" size={2} speed={0.5} />
-      <AnimatedSphere position={[5, -3, -15]} color="#F97316" size={2.5} speed={0.3} />
-    </Canvas>
-  );
-};
 
 const CTASection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
+  const ctaRef = useRef<HTMLButtonElement>(null);
+  
   useEffect(() => {
-    if (!contentRef.current) return;
+    if (!contentRef.current || !ctaRef.current) return;
 
     gsap.fromTo(
       contentRef.current.children,
@@ -73,6 +27,15 @@ const CTASection: React.FC = () => {
         }
       }
     );
+    
+    // Pulsating glow for CTA
+    gsap.to(ctaRef.current, {
+      boxShadow: '0 0 20px 5px rgba(155, 135, 245, 0.5)',
+      repeat: -1,
+      yoyo: true,
+      duration: 2,
+      ease: "sine.inOut"
+    });
   }, []);
 
   return (
@@ -80,51 +43,79 @@ const CTASection: React.FC = () => {
       ref={sectionRef} 
       className="relative py-32 overflow-hidden"
     >
-      {/* 3D Background */}
+      {/* Animated Background */}
       <div className="absolute inset-0 z-0">
-        <CTABg />
+        {/* Grid lines */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 right-0 bottom-0 grid grid-cols-12 gap-4">
+            {Array.from({ length: 13 }).map((_, i) => (
+              <div key={i} className="border-l border-white h-full"></div>
+            ))}
+          </div>
+          <div className="absolute top-0 left-0 right-0 bottom-0 grid grid-rows-12 gap-4">
+            {Array.from({ length: 13 }).map((_, i) => (
+              <div key={i} className="border-t border-white w-full"></div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 rounded-full bg-edtech-primary/60 animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${5 + Math.random() * 10}s`
+              }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Gradient orbs */}
+        <div className="absolute top-0 left-0 w-1/3 h-1/3 rounded-full bg-edtech-primary/20 blur-[100px]"></div>
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/3 rounded-full bg-edtech-accent/20 blur-[100px]"></div>
+        <div className="absolute top-1/2 right-1/4 w-1/4 h-1/4 rounded-full bg-edtech-orange/20 blur-[80px]"></div>
       </div>
       
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div 
           ref={contentRef}
-          className="max-w-4xl mx-auto bg-white/10 dark:bg-black/20 backdrop-blur-xl p-12 rounded-xl border border-white/20 shadow-2xl"
+          className="max-w-4xl mx-auto bg-black/50 backdrop-blur-xl p-12 rounded-xl border border-white/10 shadow-2xl"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center text-white">
-            Ready to Transform Your <span className="bg-gradient-to-r from-edtech-primary to-edtech-accent text-transparent bg-clip-text">
-              Teaching & Learning
-            </span>?
+            Start Your <span className="bg-gradient-to-r from-edtech-primary to-edtech-accent text-transparent bg-clip-text">
+              Learning Journey
+            </span> Today
           </h2>
           
-          <p className="text-xl text-white/80 mb-8 text-center max-w-2xl mx-auto">
-            Join Professor Chad and thousands of educators in revolutionizing education with our cutting-edge EdTech platform.
+          <p className="text-xl text-white/80 mb-12 text-center max-w-2xl mx-auto">
+            Join thousands of students and educators already transforming their
+            learning and teaching experience with our cutting-edge EdTech platform.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col items-center">
             <Button 
+              ref={ctaRef}
               size="lg" 
-              className="bg-edtech-primary hover:bg-edtech-secondary text-white px-8 py-6 text-lg"
+              className="bg-gradient-to-r from-edtech-primary to-edtech-accent hover:from-edtech-primary/90 hover:to-edtech-accent/90 text-white px-12 py-8 text-xl font-bold rounded-full"
             >
-              Sign Up as Teacher
+              <Sparkles className="mr-2 h-6 w-6" /> Start Learning Today
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-edtech-dark px-8 py-6 text-lg"
-            >
-              Join as Student <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            
+            <p className="text-white/60 text-center mt-6">
+              14-day free trial. No credit card required.
+            </p>
           </div>
-          
-          <p className="text-white/60 text-center mt-6">
-            Free trial available. No credit card required.
-          </p>
         </div>
       </div>
       
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-edtech-dark/80 via-edtech-dark/70 to-edtech-primary/50 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-edtech-dark/90 via-edtech-dark/80 to-black/80 z-0"></div>
     </div>
   );
 };

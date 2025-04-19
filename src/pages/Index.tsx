@@ -1,11 +1,16 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
-import FeaturesSection from '@/components/sections/FeaturesSection';
+import HowItWorksSection from '@/components/sections/HowItWorksSection';
+import GlobalInteractionSection from '@/components/sections/GlobalInteractionSection';
+import TutorDashboardSection from '@/components/sections/TutorDashboardSection';
+import FeaturedCoursesSection from '@/components/sections/FeaturedCoursesSection';
+import AIFeaturesSection from '@/components/sections/AIFeaturesSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import PaymentFlowSection from '@/components/sections/PaymentFlowSection';
 import CTASection from '@/components/sections/CTASection';
-import AIIntegrationSection from '@/components/sections/AIIntegrationSection';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 
 const Index = () => {
@@ -23,16 +28,32 @@ const Index = () => {
           <HeroSection />
         </section>
         
-        <section id="features">
-          <FeaturesSection />
+        <section id="how-it-works">
+          <HowItWorksSection />
         </section>
         
-        <section id="ai-integration">
-          <AIIntegrationSection />
+        <section id="global-interaction">
+          <GlobalInteractionSection />
+        </section>
+        
+        <section id="tutor-dashboard">
+          <TutorDashboardSection />
+        </section>
+        
+        <section id="featured-courses">
+          <FeaturedCoursesSection />
+        </section>
+        
+        <section id="ai-features">
+          <AIFeaturesSection />
         </section>
         
         <section id="testimonials">
           <TestimonialsSection />
+        </section>
+        
+        <section id="payment-flow">
+          <PaymentFlowSection />
         </section>
         
         <section id="cta">
